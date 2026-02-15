@@ -54,7 +54,7 @@ const router = Router();
  *               durationSeconds: 30
  *               createdAt: "2026-02-14T10:35:00Z"
  *       400:
- *         description: Dados inválidos (amountMl ou timestamp ausentes)
+ *         description: 'Dados inválidos (amountMl ou timestamp ausentes)'
  *       401:
  *         description: Token ausente ou inválido
  */
@@ -83,24 +83,24 @@ router.post('/intake', authMiddleware, async (req, res) => {
  *         name: startDate
  *         schema:
  *           type: number
- *         description: Timestamp de início em ms (ex: 1707931200000)
+ *         description: 'Timestamp de início em ms (ex: 1707931200000)'
  *       - in: query
  *         name: endDate
  *         schema:
  *           type: number
- *         description: Timestamp de fim em ms (ex: 1708017600000)
+ *         description: 'Timestamp de fim em ms (ex: 1708017600000)'
  *       - in: query
  *         name: limit
  *         schema:
  *           type: number
  *           default: 20
- *         description: Número máximo de registros (padrão 20)
+ *         description: 'Número máximo de registros (padrão 20)'
  *       - in: query
  *         name: offset
  *         schema:
  *           type: number
  *           default: 0
- *         description: Número de registros a pular (padrão 0)
+ *         description: 'Número de registros a pular (padrão 0)'
  *     responses:
  *       200:
  *         description: Lista de registros paginada
@@ -146,7 +146,7 @@ router.get('/intake', authMiddleware, (req, res) => {
  *         required: true
  *         schema:
  *           type: string
- *         description: ID único do registro (ex: clh2a2b3c4d5e6f7g8h9i0j1)
+ *         description: 'ID único do registro (ex: clh2a2b3c4d5e6f7g8h9i0j1)'
  *     responses:
  *       200:
  *         description: Registro deletado com sucesso

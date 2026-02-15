@@ -9,7 +9,7 @@ const router = Router();
  * /stats/overview:
  *   get:
  *     summary: Obter estatísticas gerais de hidratação
- *     description: Retorna um resumo das estatísticas de hidratação do usuário (hoje, semana, mês) com metas e progresso
+ *     description: 'Retorna um resumo das estatísticas de hidratação do usuário (hoje, semana, mês) com metas e progresso'
  *     tags:
  *       - Estatísticas
  *     security:

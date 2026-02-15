@@ -138,7 +138,7 @@ router.post('/login', async (req, res) => {
  * /auth/me:
  *   get:
  *     summary: Obter dados do usuário autenticado
- *     description: Retorna as informações completas do usuário atualmente autenticado (válido com token JWT)
+ *     description: 'Retorna as informações completas do usuário atualmente autenticado (válido com token JWT)'
  *     tags:
  *       - Autenticação
  *     security:

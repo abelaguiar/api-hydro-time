@@ -11,7 +11,7 @@ const router = Router();
  * /user/settings:
  *   get:
  *     summary: Obter configurações do usuário
- *     description: Retorna as configurações personalizadas do usuário autenticado (meta de hidratação, intervalo de lembrete, notificações, idioma, tema)
+ *     description: 'Retorna as configurações personalizadas do usuário autenticado (meta de hidratação, intervalo de lembrete, notificações, idioma, tema)'
  *     tags:
  *       - Configurações do Usuário
  *     security:
@@ -45,7 +45,7 @@ router.get('/settings', authMiddleware, (req, res) => {
  * /user/settings:
  *   put:
  *     summary: Atualizar todas as configurações
- *     description: Substitui todas as configurações do usuário (PUT - requer todos os campos)
+ *     description: 'Substitui todas as configurações do usuário (PUT - requer todos os campos)'
  *     tags:
  *       - Configurações do Usuário
  *     security:
@@ -112,7 +112,7 @@ router.put('/settings', authMiddleware, async (req, res) => {
  * /user/settings:
  *   patch:
  *     summary: Atualizar parcialmente as configurações
- *     description: Atualiza apenas os campos fornecidos (PATCH - campos opcionais)
+ *     description: 'Atualiza apenas os campos fornecidos (PATCH - campos opcionais)'
  *     tags:
  *       - Configurações do Usuário
  *     security:

@@ -9,7 +9,7 @@ const router = Router();
  * /user/export:
  *   get:
  *     summary: Exportar dados do usuário em JSON
- *     description: Retorna todos os dados do usuário em formato JSON compactado (usuário, configurações, registros de água, resumo)
+ *     description: 'Retorna todos os dados do usuário em formato JSON compactado (usuário, configurações, registros de água, resumo)'
  *     tags:
  *       - Exportação de Dados
  *     security:
@@ -69,7 +69,7 @@ router.get('/user/export', authMiddleware, (req, res) => {
  * /user/export/csv:
  *   get:
  *     summary: Exportar dados em CSV
- *     description: Retorna os registros de água do usuário em formato CSV (separado por vírgulas) para importação em planilhas Excel/Google Sheets com colunas ID, Data, Quantidade, Duração
+ *     description: 'Retorna os registros de água do usuário em formato CSV (separado por vírgulas) para importação em planilhas Excel/Google Sheets com colunas ID, Data, Quantidade, Duração'
  *     tags:
  *       - Exportação de Dados
  *     security:
