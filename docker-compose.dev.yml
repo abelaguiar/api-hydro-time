@@ -4,7 +4,7 @@ services:
   # Base de dados PostgreSQL
   postgres:
     image: postgres:16-alpine
-    container_name: hydro-postgres
+    container_name: hydro-postgres-dev
     environment:
       POSTGRES_USER: hydro_user
       POSTGRES_PASSWORD: hydro_password
@@ -12,41 +12,45 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - postgres_data_dev:/var/lib/postgresql/data
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U hydro_user -d hydro_time"]
       interval: 10s
       timeout: 5s
       retries: 5
     networks:
-      - hydro-network
+      - hydro-network-dev
 
-  # API Node.js
+  # API Node.js (Desenvolvimento com hot-reload)
   api:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: hydro-api
+    image: node:20-alpine
+    container_name: hydro-api-dev
+    working_dir: /app
     ports:
       - "3000:3000"
     environment:
       DATABASE_URL: "postgresql://hydro_user:hydro_password@postgres:5432/hydro_time?schema=public"
       JWT_SECRET: "hydro-time-secret-key-change-in-production"
       PORT: 3000
-      NODE_ENV: "production"
+      NODE_ENV: "development"
+    volumes:
+      - .:/app
+      - /app/node_modules
     depends_on:
       postgres:
         condition: service_healthy
-    volumes:
-      - ./logs:/app/logs
+    command: >
+      sh -c "npm install &&
+             npx prisma migrate deploy &&
+             npx prisma generate &&
+             npm run dev"
     networks:
-      - hydro-network
-    restart: unless-stopped
+      - hydro-network-dev
 
 volumes:
-  postgres_data:
+  postgres_data_dev:
     driver: local
 
 networks:
-  hydro-network:
+  hydro-network-dev:
     driver: bridge

@@ -1,26 +1,49 @@
 # Hydro Time API
 
-API Node.js para gerenciamento de hidratação com autenticação JWT e persistência de dados na nuvem.
+API Node.js para gerenciamento de hidratação com autenticação JWT, PostgreSQL e persistência de dados na nuvem.
 
-## Instalação e Setup
+## 🎯 Início Rápido
+
+### Com Docker (⭐ Recomendado)
+
+```bash
+# Iniciar API + PostgreSQL
+docker-compose up --build
+
+# Ou com hot-reload (desenvolvimento)
+docker-compose -f docker-compose.dev.yml up --build
+```
+
+API em: **http://localhost:3000**  
+PostgreSQL em: **localhost:5432**
+
+Veja [DOCKER.md](./DOCKER.md) para mais detalhes.
+
+### Sem Docker
 
 1. **Instalar dependências:**
 ```bash
 npm install
 ```
 
-2. **Configurar variáveis de ambiente:**
-Copie o arquivo `.env.example` para `.env`:
+2. **Configurar PostgreSQL:**
 ```bash
-cp .env.example .env
+# Criar banco de dados
+createdb hydro_time
 ```
 
-3. **Executar migrations do banco de dados:**
+3. **Configurar variáveis de ambiente:**
+```bash
+cp .env.example .env
+# Editar .env com suas credenciais do PostgreSQL
+```
+
+4. **Executar migrations:**
 ```bash
 npm run prisma:migrate
 ```
 
-4. **Iniciar o servidor em desenvolvimento:**
+5. **Iniciar servidor:**
 ```bash
 npm run dev
 ```
@@ -317,7 +340,16 @@ npm run prisma:migrate  # Executar migrations do banco de dados
 npm run prisma:studio   # Abrir Prisma Studio (interface visual para o banco)
 ```
 
-### Estrutura do Projeto
+### Com Docker
+
+Veja [DOCKER.md](./DOCKER.md) para guia completo de:
+- Iniciar com Docker
+- Gerenciar PostgreSQL
+- Executar migrations
+- Operações comuns
+- Troubleshooting
+
+---
 
 ```
 src/
