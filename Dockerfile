@@ -5,7 +5,7 @@ WORKDIR /app
 
 # Copiar package.json e instalar dependências
 COPY package.json package-lock.json ./
-RUN npm ci
+RUN npm ci && apk add --no-cache openssl ca-certificates
 
 # Copiar código-fonte e prisma
 COPY src ./src
@@ -25,7 +25,7 @@ WORKDIR /app
 
 # Instalar apenas dependências de produção
 COPY package.json package-lock.json ./
-RUN npm ci --only=production && npm cache clean --force
+RUN npm ci --only=production && npm cache clean --force && apk add --no-cache openssl ca-certificates
 
 # Copiar Prisma schema e migrations
 COPY prisma ./prisma
