@@ -4,6 +4,18 @@ import { prisma } from './utils/prisma.js';
 
 const startServer = async () => {
   try {
+    // Executar migrations em produção
+    if (env.NODE_ENV === 'production') {
+      console.log('🔄 Executando migrations...');
+      const { execSync } = await import('child_process');
+      try {
+        execSync('npx prisma migrate deploy', { stdio: 'inherit' });
+        console.log('✓ Migrations executadas');
+      } catch (error) {
+        console.warn('⚠ Erro ao executar migrations (pode não haver nuevas):', error);
+      }
+    }
+
     // Testar conexão com o banco de dados
     await prisma.$queryRaw`SELECT 1`;
     console.log('✓ Banco de dados conectado');
