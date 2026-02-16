@@ -95,10 +95,10 @@ exec npm start                # Inicia aplicação
 |---------|-----------|
 | `docker-compose.yml` | Produção com PostgreSQL |
 | `docker-compose.dev.yml` | Desenvolvimento com hot-reload |
-| `docker-entrypoint.sh` | Executa migrations ao iniciar |
-| `docker-setup.sh` | Menu interativo para gerenciar Docker |
-| `test-docker.sh` | Script de teste completo |
-| `.dockerignore` | Otimiza build docker |
+| `docker/Dockerfile` | Multi-stage |
+| `docker/docker-entrypoint.sh` | Executa migrations ao iniciar |
+| `docker/docker-setup.sh` | Menu interativo para gerenciar Docker |
+| `docker/.dockerignore` | Otimiza build docker |
 | `DOCKER.md` | Guia completo de Docker |
 
 ### 8. **Dependências Adicionadas**
@@ -189,10 +189,11 @@ docker-compose up
 api-hydro-time/
 ├── docker-compose.yml          ← Produção
 ├── docker-compose.dev.yml      ← Desenvolvimento
-├── docker-setup.sh             ← Menu interativo
-├── Dockerfile                  ← Multi-stage
-├── docker-entrypoint.sh        ← Migrations automáticas
-├── .dockerignore               ← Otimização
+├── docker/                     ← Arquivos Docker
+│   ├── Dockerfile              ← Multi-stage
+│   ├── docker-entrypoint.sh    ← Migrations automáticas
+│   ├── docker-setup.sh         ← Menu interativo
+│   └── .dockerignore           ← Otimização
 ├── .env                        ← Configurado para Postgres
 ├── .env.example                ← Template
 ├── DOCKER.md                   ← Guia Docker

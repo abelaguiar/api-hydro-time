@@ -25,7 +25,7 @@ services:
   api:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: docker/Dockerfile
     container_name: hydro-api
     ports:
       - "5000:5000"
