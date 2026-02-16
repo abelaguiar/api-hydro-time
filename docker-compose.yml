@@ -28,11 +28,11 @@ services:
       dockerfile: Dockerfile
     container_name: hydro-api
     ports:
-      - "3000:3000"
+      - "5000:5000"
     environment:
       DATABASE_URL: "postgresql://hydro_user:hydro_password@postgres:5432/hydro_time?schema=public"
       JWT_SECRET: "hydro-time-secret-key-change-in-production"
-      PORT: 3000
+      PORT: 5000
       NODE_ENV: "production"
     depends_on:
       postgres:

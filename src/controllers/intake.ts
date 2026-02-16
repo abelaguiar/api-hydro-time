@@ -17,14 +17,17 @@ export const intakeController = {
         data: {
           userId: req.user.userId,
           amountMl,
-          timestamp,
+          timestamp: BigInt(timestamp),
           durationSeconds: durationSeconds || 0,
         },
       });
 
       res.status(201).json({
         message: 'Registro de ingestão criado com sucesso',
-        intakeLog,
+        intakeLog: {
+          ...intakeLog,
+          timestamp: intakeLog.timestamp.toString(),
+        },
       });
     } catch (error) {
       console.error('Erro ao criar registro de ingestão:', error);
@@ -49,10 +52,10 @@ export const intakeController = {
       if (startDate || endDate) {
         where.timestamp = {};
         if (startDate) {
-          where.timestamp.gte = parseInt(startDate as string);
+          where.timestamp.gte = BigInt(startDate as string);
         }
         if (endDate) {
-          where.timestamp.lte = parseInt(endDate as string);
+          where.timestamp.lte = BigInt(endDate as string);
         }
       }
 
@@ -66,8 +69,14 @@ export const intakeController = {
         prisma.intakeLog.count({ where }),
       ]);
 
+      // Converter BigInt para string para serialização JSON
+      const intakeLogsFormatted = intakeLogs.map(log => ({
+        ...log,
+        timestamp: log.timestamp.toString(),
+      }));
+
       res.json({
-        intakeLogs,
+        intakeLogs: intakeLogsFormatted,
         total,
         limit: limitNum,
         offset: offsetNum,
