@@ -23,7 +23,7 @@ services:
 
   # API Node.js (Desenvolvimento com hot-reload)
   api:
-    image: node:20-alpine
+    image: node:20-slim
     container_name: hydro-api-dev
     working_dir: /app
     ports:
@@ -40,7 +40,9 @@ services:
       postgres:
         condition: service_healthy
     command: >
-      sh -c "npm install &&
+      sh -c "apt-get update -y &&
+             apt-get install -y openssl &&
+             npm install &&
              npx prisma migrate deploy &&
              npx prisma generate &&
              npm run dev"

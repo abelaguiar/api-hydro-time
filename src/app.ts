@@ -12,7 +12,7 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://localhost:5173', 'http://0.0.0.0:3000', 'http://0.0.0.0:5173'],
+  origin: ['http://localhost:3000', 'http://localhost:5173', 'http://0.0.0.0:3000', 'http://0.0.0.0:5173', 'http://hydrotime-app:3000', 'http://hydrotime-app:5173'],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],

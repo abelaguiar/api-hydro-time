@@ -75,6 +75,11 @@ export const intakeController = {
         timestamp: log.timestamp.toString(),
       }));
 
+      console.log(`[getIntakeLogs] Retornando ${intakeLogsFormatted.length} registros para usuário ${req.user?.userId}`);
+      if (intakeLogsFormatted.length > 0) {
+        console.log('[getIntakeLogs] Primeiro registro:', intakeLogsFormatted[0]);
+      }
+
       res.json({
         intakeLogs: intakeLogsFormatted,
         total,
