@@ -17,7 +17,7 @@ docker-compose -f docker-compose.dev.yml up --build
 API em: **http://localhost:3000**  
 PostgreSQL em: **localhost:5432**
 
-Veja [DOCKER.md](./DOCKER.md) para mais detalhes.
+Veja [docs/DOCKER.md](./docs/DOCKER.md) para mais detalhes.
 
 ### Sem Docker
 
@@ -342,7 +342,7 @@ npm run prisma:studio   # Abrir Prisma Studio (interface visual para o banco)
 
 ### Com Docker
 
-Veja [DOCKER.md](./DOCKER.md) para guia completo de:
+Veja [docs/DOCKER.md](./docs/DOCKER.md) para guia completo de:
 - Iniciar com Docker
 - Gerenciar PostgreSQL
 - Executar migrations
