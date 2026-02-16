@@ -68,12 +68,11 @@ export const exportController = {
       });
 
       // Gerar CSV
-      const headers = ['ID', 'Data/Hora', 'Quantidade (ml)', 'Duração (s)'];
+      const headers = ['ID', 'Data/Hora', 'Quantidade (ml)'];
       const rows = intakeLogs.map(log => [
         log.id,
         new Date(Number(log.timestamp)).toISOString(),
         log.amountMl.toString(),
-        log.durationSeconds.toString(),
       ]);
 
       const csv = [headers, ...rows]
