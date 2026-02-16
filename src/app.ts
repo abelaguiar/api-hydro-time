@@ -18,6 +18,7 @@ const allowedOrigins = [
   'http://0.0.0.0:5173',
   'http://hydrotime-app:3000',
   'http://hydrotime-app:5173',
+  'https://api-hydro-time-mckv.vercel.app',
   process.env.FRONTEND_URL || 'https://hydro-time.vercel.app',
 ];
 
