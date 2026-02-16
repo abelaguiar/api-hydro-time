@@ -22,7 +22,6 @@ export const userSettingsSchema = z.object({
 export const intakeLogSchema = z.object({
   amountMl: z.number().int().positive('Quantidade deve ser positiva'),
   timestamp: z.coerce.number().int('Timestamp deve ser um número inteiro válido'),
-  durationSeconds: z.number().int().nonnegative().optional().default(0),
 });
 
 export type RegisterInput = z.infer<typeof registerSchema>;

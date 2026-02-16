@@ -51,7 +51,6 @@ export interface IntakeLog {
   userId: string;
   amountMl: number;
   timestamp: number;
-  durationSeconds: number;
   createdAt: string;
   updatedAt: string;
 }
@@ -59,7 +58,6 @@ export interface IntakeLog {
 export interface IntakeLogPayload {
   amountMl: number;
   timestamp: number;
-  durationSeconds?: number;
 }
 
 export interface IntakeLogsResponse {

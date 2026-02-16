@@ -42,14 +42,10 @@ async function seedData() {
         // Random amount between 150ml and 500ml
         const amountMl = Math.floor(Math.random() * 350) + 150;
 
-        // Random duration between 5 and 120 seconds
-        const durationSeconds = Math.floor(Math.random() * 115) + 5;
-
         intakeLogs.push({
           userId: user.id,
           amountMl,
           timestamp: BigInt(logDate.getTime()),
-          durationSeconds,
         });
       }
 

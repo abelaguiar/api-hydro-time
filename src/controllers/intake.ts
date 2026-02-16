@@ -11,14 +11,13 @@ export const intakeController = {
         return;
       }
 
-      const { amountMl, timestamp, durationSeconds } = req.body as IntakeLogInput;
+      const { amountMl, timestamp } = req.body as IntakeLogInput;
 
       const intakeLog = await prisma.intakeLog.create({
         data: {
           userId: req.user.userId,
           amountMl,
           timestamp: BigInt(timestamp),
-          durationSeconds: durationSeconds || 0,
         },
       });
 
